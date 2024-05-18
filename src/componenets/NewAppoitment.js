@@ -97,11 +97,11 @@ function NewAppoitment() {
                                                         <div class="col-6">
                                                             <div class="d-flex flex-row align-items-center mb-4">
 
-                                                                <div class="   mb-0">
+                                                                <div class="mb-0">
                                                                     <input type="radio" id="form3Example1c" value="Male" name="gender" onChange={(event) => { readAppotmentobj(event, 'gender') }} />
                                                                     Male
                                                                     <input type="radio" id="form3Example1c" value="FeMale"  name="gender" onChange={(event) => { readAppotmentobj(event, 'gender') }} /> Fe
-                                                                    Male
+                                                                   FeMale
                                                                 </div>
                                                             </div>
                                                         </div>

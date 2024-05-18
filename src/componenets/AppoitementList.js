@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import '../services/main.css'
 import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 function AppoitementList() {
 
     const [allapoitement, setAllapotment] = useState([]);
@@ -26,6 +28,23 @@ function AppoitementList() {
             getAllApotment();
         }
     }
+
+    const handleRemovAppotmente = async (aid) => {
+        debugger;
+        try {
+            const result = await axios.delete("https://freeapi.gerasim.in/api/HospitalAppointment/DeleteAppointmentByAppointment?appointmentId=" + aid)
+            if (result.data.result) {
+                alert(result.data.message)
+                getAllApotment();
+            }
+            else {
+                alert(result.data.message)
+            }
+        } catch (error) {
+
+        }
+
+    }
     useEffect(() => {
         getAllApotment();
     }, [])
@@ -46,6 +65,7 @@ function AppoitementList() {
                                 <div class="card card-margin">
                                     <div class="card-header no-border">
                                         <h5 class="card-title">{allapoitement.name}</h5>
+                                        <FontAwesomeIcon icon={faTimes} className="close-icon " style={{ marginLeft: '70%' }} onClick={() => handleRemovAppotmente(allapoitement.appointmentId)} />
                                     </div>
                                     <div class="card-body pt-0">
                                         <div class="widget-49">
@@ -62,7 +82,7 @@ function AppoitementList() {
                                                 allapoitement.isDone ? <div class="widget-49-meeting-action">
                                                     <a href="#" class="btn btn-sm btn-success"> Done</a>
                                                 </div> : <div class="widget-49-meeting-action">
-                                                    <a href="#" class="btn btn-sm btn-outline-primary" onClick={()=>{markDone(allapoitement.appointmentId)}}>Mark Done</a>
+                                                    <a href="#" class="btn btn-sm btn-outline-primary" onClick={() => { markDone(allapoitement.appointmentId) }}>Mark Done</a>
                                                 </div>
                                             }
 
@@ -72,146 +92,7 @@ function AppoitementList() {
                             </div>)
                         })
                     }
-                    {/* <div class="col-lg-3">
-                <div class="card card-margin">
-                    <div class="card-header no-border">
-                        <h5 class="card-title">Rohit Sharma</h5>
-                    </div>
-                    <div class="card-body pt-0">
-                        <div class="widget-49">
-                            <div class="widget-49-title-wrapper">
-                                <div class="widget-49-date-primary">
-                                    <span class="widget-49-date-day">1</span> 
-                                </div>
-                                <div class="widget-49-meeting-info">
-                                    <span class="widget-49-pro-title">Mumbai</span>
-                                    <span class="widget-49-meeting-time">22 Dec 7.00 Pm</span>
-                                </div>
-                            </div> 
-                            <div class="widget-49-meeting-action">
-                                <a href="#" class="btn btn-sm btn-success"> Done</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="card card-margin">
-                    <div class="card-header no-border">
-                        <h5 class="card-title">Virat Kohli</h5>
-                    </div>
-                    <div class="card-body pt-0">
-                        <div class="widget-49">
-                            <div class="widget-49-title-wrapper">
-                                <div class="widget-49-date-warning">
-                                    <span class="widget-49-date-day">2</span> 
-                                </div>
-                                <div class="widget-49-meeting-info">
-                                    <span class="widget-49-pro-title">New Mumbai</span>
-                                    <span class="widget-49-meeting-time">22 dec 7.30 Pm</span>
-                                </div>
-                            </div>
-                            
-                            <div class="widget-49-meeting-action">
-                                <a href="#" class="btn btn-sm btn-outline-primary">Mark Done</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="card card-margin">
-                    <div class="card-header no-border">
-                        <h5 class="card-title">Suresh Raina</h5>
-                    </div>
-                    <div class="card-body pt-0">
-                        <div class="widget-49">
-                            <div class="widget-49-title-wrapper">
-                                <div class="widget-49-date-warning">
-                                    <span class="widget-49-date-day">3</span> 
-                                </div>
-                                <div class="widget-49-meeting-info">
-                                    <span class="widget-49-pro-title">New Mumbai</span>
-                                    <span class="widget-49-meeting-time">22 dec 7.30 Pm</span>
-                                </div>
-                            </div>
-                            <div class="widget-49-meeting-action">
-                                <a href="#" class="btn btn-sm btn-outline-primary">Mark Done</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="card card-margin">
-                    <div class="card-header no-border">
-                        <h5 class="card-title">Ankit Rao</h5>
-                    </div>
-                    <div class="card-body pt-0">
-                        <div class="widget-49">
-                            <div class="widget-49-title-wrapper">
-                                <div class="widget-49-date-primary">
-                                    <span class="widget-49-date-day">4</span> 
-                                </div>
-                                <div class="widget-49-meeting-info">
-                                    <span class="widget-49-pro-title">Mumbai</span>
-                                    <span class="widget-49-meeting-time">22 Dec 8.00 Pm</span>
-                                </div>
-                            </div> 
-                            <div class="widget-49-meeting-action">
-                                <a href="#" class="btn btn-sm btn-outline-primary">Mark Done</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="card card-margin">
-                    <div class="card-header no-border">
-                        <h5 class="card-title">Sachin Tendulkar </h5>
-                    </div>
-                    <div class="card-body pt-0">
-                        <div class="widget-49">
-                            <div class="widget-49-title-wrapper">
-                                <div class="widget-49-date-warning">
-                                    <span class="widget-49-date-day">5</span> 
-                                </div>
-                                <div class="widget-49-meeting-info">
-                                    <span class="widget-49-pro-title"> Mumbai</span>
-                                    <span class="widget-49-meeting-time">22 dec 7.30 Pm</span>
-                                </div>
-                            </div>
-                            
-                            <div class="widget-49-meeting-action">
-                                <a href="#" class="btn btn-sm btn-outline-primary">Mark Done</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="card card-margin">
-                    <div class="card-header no-border">
-                        <h5 class="card-title">Aditya</h5>
-                    </div>
-                    <div class="card-body pt-0">
-                        <div class="widget-49">
-                            <div class="widget-49-title-wrapper">
-                                <div class="widget-49-date-warning">
-                                    <span class="widget-49-date-day">6</span> 
-                                </div>
-                                <div class="widget-49-meeting-info">
-                                    <span class="widget-49-pro-title">New Mumbai</span>
-                                    <span class="widget-49-meeting-time">22 dec 8.30 Pm</span>
-                                </div>
-                            </div>
-                            <div class="widget-49-meeting-action">
-                                <a href="#" class="btn btn-sm btn-outline-primary">Mark Done</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> */}
+
                 </div>
             </div>
         </>
