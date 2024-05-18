@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/hospitalappoitmentbooking/AdminLogin/static/css/main.f78b7155.css",
-    "main.js": "/hospitalappoitmentbooking/AdminLogin/static/js/main.019e5ce3.js",
-    "static/js/453.affdacdb.chunk.js": "/hospitalappoitmentbooking/AdminLogin/static/js/453.affdacdb.chunk.js",
-    "static/media/back-1.png": "/hospitalappoitmentbooking/AdminLogin/static/media/back-1.0fe2712b1a5df922ae3f.png",
-    "static/media/logo.svg": "/hospitalappoitmentbooking/AdminLogin/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
-    "index.html": "/hospitalappoitmentbooking/AdminLogin/index.html",
-    "main.f78b7155.css.map": "/hospitalappoitmentbooking/AdminLogin/static/css/main.f78b7155.css.map",
-    "main.019e5ce3.js.map": "/hospitalappoitmentbooking/AdminLogin/static/js/main.019e5ce3.js.map",
-    "453.affdacdb.chunk.js.map": "/hospitalappoitmentbooking/AdminLogin/static/js/453.affdacdb.chunk.js.map"
+    "main.css": "/hospitalappoitmentbooking/static/css/main.f78b7155.css",
+    "main.js": "/hospitalappoitmentbooking/static/js/main.3ba63b2a.js",
+    "static/js/453.affdacdb.chunk.js": "/hospitalappoitmentbooking/static/js/453.affdacdb.chunk.js",
+    "static/media/back-1.png": "/hospitalappoitmentbooking/static/media/back-1.0fe2712b1a5df922ae3f.png",
+    "static/media/logo.svg": "/hospitalappoitmentbooking/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/hospitalappoitmentbooking/index.html",
+    "main.f78b7155.css.map": "/hospitalappoitmentbooking/static/css/main.f78b7155.css.map",
+    "main.3ba63b2a.js.map": "/hospitalappoitmentbooking/static/js/main.3ba63b2a.js.map",
+    "453.affdacdb.chunk.js.map": "/hospitalappoitmentbooking/static/js/453.affdacdb.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f78b7155.css",
-    "static/js/main.019e5ce3.js"
+    "static/js/main.3ba63b2a.js"
   ]
 }
