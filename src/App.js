@@ -21,16 +21,18 @@ const isloggedIn=useSelector(selectIsLoggedIn)
     <BrowserRouter>
    
      <div className="App">
-     {isloggedIn && <Navabar />}
+    
       <Routes>
-        {/* <Route path="/" element={<RoleSelection/>}></Route> */}
+       
         <Route path="/" element={<AdminLogin/>}></Route>
         <Route path="/dashboard" element={<Dashboard/>}></Route>
         <Route path="/newappoitement" element={<NewAppoitment/>}></Route>
         <Route path="/appoitmentlist" element={<AppoitementList/>}></Route>
         <Route path="/patientlist" element={<Paitent/>}></Route>
         <Route path="/navbar" element={<Navabar />} />
+       
       </Routes>
+      {isloggedIn && <Navabar />}
       {/* <Navabar/> */}
     </div>
     <ToastContainer 
