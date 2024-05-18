@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/HospitalAppoitmentBooking/static/css/main.3899794a.css",
-    "main.js": "/HospitalAppoitmentBooking/static/js/main.a1e6c1bf.js",
-    "static/js/453.affdacdb.chunk.js": "/HospitalAppoitmentBooking/static/js/453.affdacdb.chunk.js",
-    "static/media/back-1.png": "/HospitalAppoitmentBooking/static/media/back-1.0fe2712b1a5df922ae3f.png",
-    "static/media/logo.svg": "/HospitalAppoitmentBooking/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
-    "index.html": "/HospitalAppoitmentBooking/index.html",
-    "main.3899794a.css.map": "/HospitalAppoitmentBooking/static/css/main.3899794a.css.map",
-    "main.a1e6c1bf.js.map": "/HospitalAppoitmentBooking/static/js/main.a1e6c1bf.js.map",
-    "453.affdacdb.chunk.js.map": "/HospitalAppoitmentBooking/static/js/453.affdacdb.chunk.js.map"
+    "main.css": "/static/css/main.f78b7155.css",
+    "main.js": "/static/js/main.5b659d34.js",
+    "static/js/453.affdacdb.chunk.js": "/static/js/453.affdacdb.chunk.js",
+    "static/media/back-1.png": "/static/media/back-1.0fe2712b1a5df922ae3f.png",
+    "static/media/logo.svg": "/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/index.html",
+    "main.f78b7155.css.map": "/static/css/main.f78b7155.css.map",
+    "main.5b659d34.js.map": "/static/js/main.5b659d34.js.map",
+    "453.affdacdb.chunk.js.map": "/static/js/453.affdacdb.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3899794a.css",
-    "static/js/main.a1e6c1bf.js"
+    "static/css/main.f78b7155.css",
+    "static/js/main.5b659d34.js"
   ]
 }
