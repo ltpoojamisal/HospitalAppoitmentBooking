@@ -18,10 +18,12 @@ function App() {
   // const [isLoggedIn, setIsLoggedIn] = useState(false);
 const isloggedIn=useSelector(selectIsLoggedIn)
   return (
+    
+    <div className="App">
+      
     <BrowserRouter>
-   
-     <div className="App">
-      <AdminLogin/>
+    <AdminLogin/>
+     
      {/* <Navabar/> */}
 
       <Routes>
@@ -36,7 +38,7 @@ const isloggedIn=useSelector(selectIsLoggedIn)
       </Routes>
       {isloggedIn && <Navabar />}
       {/* <Navabar/> */}
-    </div>
+ 
     <ToastContainer 
                 position="top-center"
                 autoClose={500}
@@ -49,6 +51,7 @@ const isloggedIn=useSelector(selectIsLoggedIn)
                 pauseOnHover
             />
     </BrowserRouter>
+    </div>
    
   );
 }
