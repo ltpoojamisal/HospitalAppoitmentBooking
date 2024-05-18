@@ -21,7 +21,7 @@ const isloggedIn=useSelector(selectIsLoggedIn)
     <BrowserRouter>
    
      <div className="App">
-    
+     <Navabar/>
       <Routes>
        
         <Route path="/" element={<AdminLogin/>}></Route>
