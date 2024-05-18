@@ -19,18 +19,8 @@ function App() {
 const isloggedIn=useSelector(selectIsLoggedIn)
   return (
     <BrowserRouter>
-      <ToastContainer 
-                position="top-center"
-                autoClose={500}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-            />
-     <div className="">
+   
+     <div className="App">
      {isloggedIn && <Navabar />}
       <Routes>
         {/* <Route path="/" element={<RoleSelection/>}></Route> */}
@@ -43,6 +33,17 @@ const isloggedIn=useSelector(selectIsLoggedIn)
       </Routes>
       {/* <Navabar/> */}
     </div>
+    <ToastContainer 
+                position="top-center"
+                autoClose={500}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
     </BrowserRouter>
    
   );
