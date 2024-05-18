@@ -22,10 +22,6 @@ const isloggedIn=useSelector(selectIsLoggedIn)
     <div className="App">
       
     <BrowserRouter>
-    <AdminLogin/>
-     
-     {/* <Navabar/> */}
-
       <Routes>
        
         <Route path="/" element={<AdminLogin/>}></Route>
@@ -37,7 +33,6 @@ const isloggedIn=useSelector(selectIsLoggedIn)
        
       </Routes>
       {isloggedIn && <Navabar />}
-      {/* <Navabar/> */}
  
     <ToastContainer 
                 position="top-center"
