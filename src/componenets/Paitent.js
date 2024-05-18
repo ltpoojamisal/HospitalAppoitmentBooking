@@ -3,9 +3,13 @@ import React, { useEffect, useState } from 'react'
 import { Button, Card, Spinner, Modal } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { AgGridReact } from 'ag-grid-react';
-import "ag-grid-community/styles/ag-grid.css"; // Mandatory CSS required by the grid
-import "ag-grid-community/styles/ag-theme-quartz.css"; // Optional Theme applied to the grid
+// import "ag-grid-community/styles/ag-grid.css"; // Mandatory CSS required by the grid
+// import "ag-grid-community/styles/ag-theme-quartz.css"; // Optional Theme applied to the grid
+import 'ag-grid-community/styles/ag-grid.css';
+import 'ag-grid-community/styles/ag-theme-alpine.css';
 import { faEdit, faTrash, faPlus } from '@fortawesome/free-solid-svg-icons';
+import '../services/patient.css';
+import { toast } from 'react-toastify';
 
 function Paitent() {
     const [rowData, setRowData] = useState([]);
@@ -42,18 +46,18 @@ function Paitent() {
             if (patientObj.name != '' && patientObj.city != '' && patientObj.gender != '' && patientObj.mobileNo != '' && patientObj.age != 0) {
                 const result = await axios.post("https://freeapi.gerasim.in/api/HospitalAppointment/AddNewPatient", patientObj)
                 if (result.data.result) {
-                    alert(result.data.message)
+                    toast.success(result.data.message)
                     restPatientObj();
                     getAllPaitent();
                 }
                 else {
-                    alert(result.data.message)
+                    toast.error(result.data.message)
                 }
                 setvalidationerror(false);
             }
 
         } catch (error) {
-            alert(error);
+            toast.error(error);
         }
 
     }
@@ -67,13 +71,13 @@ function Paitent() {
         debugger;
         const result = await axios.put("https://freeapi.gerasim.in/api/HospitalAppointment/UpdatePatient", patientObj)
         if (result.data.result) {
-            alert(result.data.message)
+            toast.success(result.data.message)
             handleModalclose();
             restPatientObj();
             getAllPaitent();
         }
         else {
-            alert(result.data.message)
+            toast.error(result.data.message)
         }
     }
     /*************** Modal Close And Open */
@@ -90,16 +94,16 @@ function Paitent() {
             debugger;
             const result = await axios.delete("https://freeapi.gerasim.in/api/HospitalAppointment/DeletePatientByPatienId?patientId=" + patid)
             if (result.data.result) {
-                alert(result.data.message)
+                toast.success(result.data.message)
                 getAllPaitent();
                 handleModalclose();
             }
             else {
-                alert(result.data.message)
+                toast.error(result.data.message)
             }
         }
         catch (error) {
-
+            toast.error(error)
         }
 
 
@@ -153,10 +157,11 @@ function Paitent() {
             if (result.data && result.data.data) {
                 setRowData(result.data.data);
             } else {
-                alert("Something went wrong");
+                toast.error("Something went wrong");
             }
         } catch (error) {
             console.error(error);
+            toast.error(error)
         } finally {
             setLoading(false);
         }
@@ -172,14 +177,14 @@ function Paitent() {
             <div className='row'>
                 <div className='col-md'>
                     <div className="row mt-3 container-fluid">
-                        <div className="row mt-3">
+                        <div className="row mt-3 mb-5">
                             <div className="col-12">
                                 <Card>
-                                    <Card.Header className="d-flex justify-content-between">
-                                        <Card.Title>
+                                    <Card.Header className="d-flex justify-content-between bg-primary">
+                                        <Card.Title className='text-white'>
                                             Patient List
                                         </Card.Title>
-                                        <Button onClick={handleModalOpen}><FontAwesomeIcon icon={faPlus} /> Add New</Button>
+                                        <Button onClick={handleModalOpen}><FontAwesomeIcon icon={faPlus} /></Button>
                                     </Card.Header>
                                     <Card.Body className="d-flex justify-content-center">
                                         {loading ? (
@@ -196,7 +201,7 @@ function Paitent() {
                                                 </Button>
                                             </div>
                                         ) : (
-                                            <div className="ag-theme-quartz align-item-center" style={{ height: 500, width: '100%' }}>
+                                            <div className="ag-theme-alpine ag-theme-custom" style={{ height: 400, width: '100%' }}>
                                                 <AgGridReact
                                                     columnDefs={columnDefs}
                                                     rowData={rowData}
@@ -270,17 +275,17 @@ function Paitent() {
                                         }
                                     </div>
                                     {
-                                        patientObj.patientId===0 && <div className='col-md-6'>
-                                        <label>Gender </label>
-                                        <div class="mb-0">
-                                            <input type="radio" id="form3Example1c" value="male" name="gender" onChange={(e) => { readPaitentobj(e, 'gender') }} />
-                                            Male
-                                            <input type="radio" id="form3Example1c" value="female" name="gender" onChange={(e) => { readPaitentobj(e, 'gender') }} />
-                                            FeMale
+                                        patientObj.patientId === 0 && <div className='col-md-6'>
+                                            <label>Gender </label>
+                                            <div class="mb-0">
+                                                <input type="radio" id="form3Example1c" value="male" name="gender" onChange={(e) => { readPaitentobj(e, 'gender') }} />
+                                                Male
+                                                <input type="radio" id="form3Example1c" value="female" name="gender" onChange={(e) => { readPaitentobj(e, 'gender') }} />
+                                                FeMale
+                                            </div>
                                         </div>
-                                    </div>
                                     }
-                                   
+
 
                                 </div>
                             </div>

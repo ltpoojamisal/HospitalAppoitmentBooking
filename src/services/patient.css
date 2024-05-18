@@ -1,0 +1,4 @@
+.ag-theme-custom .ag-header {
+    background-color: var(--bs-secondary) !important; /* Assuming you're using Bootstrap 5 */
+    color: rgb(245, 224, 224); /* Adjust the text color for better contrast */
+}

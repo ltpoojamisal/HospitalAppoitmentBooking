@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import backImage from '../services/images/back-1.png';
 import { useDispatch } from 'react-redux';
 import { login } from '../store/slices/AdminSlice';
+import { toast } from 'react-toastify';
 function AdminLogin() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -16,7 +17,7 @@ function AdminLogin() {
             dispatch(login({ username }));
             history('/dashboard');
         } else {
-            alert('Invalid credentials');
+            toast.error('Invalid credentials');
         }
     };
 

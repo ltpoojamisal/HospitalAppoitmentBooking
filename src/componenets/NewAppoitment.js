@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import '../services/main.css';
 import backImage from '../services/images/back-1.png';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 function NewAppoitment() {
     const [appotmentObj, setAppoitementObj] = useState({
         "name": "",
@@ -15,19 +16,32 @@ function NewAppoitment() {
         "naration": ""
     })
     const readAppotmentobj = (event, key) => {
-      //  const value = key === 'isFirstVisit' ? event.target.checked : event.target.value;
+        //  const value = key === 'isFirstVisit' ? event.target.checked : event.target.value;
         const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
         setAppoitementObj(prev => ({ ...prev, [key]: value }));
- }
-
+    }
+    const resetObj = () => {
+        setAppoitementObj({
+            "name": "",
+            "mobileNo": "",
+            "city": "",
+            "age": 0,
+            "gender": "",
+            "appointmentDate": "",
+            "appointmentTime": "",
+            "isFirstVisit": true,
+            "naration": ""
+        })
+    }
     const bookappoitment = async () => {
         debugger
         const result = await axios.post("https://freeapi.gerasim.in/api/HospitalAppointment/AddNewAppointment", appotmentObj);
         if (result.data.result) {
-            alert(result.data.message)
+            toast.success("Appoitement Added ")
+            resetObj();
         }
         else {
-            alert(result.data.message)
+            toast.error(result.data.message)
         }
     }
     return (
@@ -49,7 +63,7 @@ function NewAppoitment() {
                                                                 <i class="fa fa-user fa-lg me-3 fa-fw"></i>
                                                                 <div class="   mb-0">
                                                                     <input type="text" id="form3Example1c"
-                                                                        placeholder="Enter Name" class="form-control" onChange={(event) => { readAppotmentobj(event, 'name') }} />
+                                                                        placeholder="Enter Name" class="form-control" value={appotmentObj.name} onChange={(event) => { readAppotmentobj(event, 'name') }} />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -58,7 +72,7 @@ function NewAppoitment() {
                                                                 <i class="fa fa-phone fa-lg me-3 fa-fw"></i>
                                                                 <div class="   mb-0">
                                                                     <input type="text" id="form3Example1c"
-                                                                        placeholder="Enter Mobile No" class="form-control" onChange={(event) => { readAppotmentobj(event, 'mobileNo') }} />
+                                                                        placeholder="Enter Mobile No" class="form-control" value={appotmentObj.mobileNo} onChange={(event) => { readAppotmentobj(event, 'mobileNo') }} />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -69,7 +83,7 @@ function NewAppoitment() {
                                                                 <i class="fa fa-map-marker fa-lg me-3 fa-fw"></i>
                                                                 <div class="   mb-0">
                                                                     <input type="text" id="form3Example1c"
-                                                                        placeholder="Enter City" class="form-control" onChange={(event) => { readAppotmentobj(event, 'city') }} />
+                                                                        placeholder="Enter City" class="form-control" value={appotmentObj.city} onChange={(event) => { readAppotmentobj(event, 'city') }} />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -78,7 +92,7 @@ function NewAppoitment() {
                                                                 <i class="fa fa-calendar fa-lg me-3 fa-fw"></i>
                                                                 <div class="   mb-0">
                                                                     <input type="text" id="form3Example1c"
-                                                                        placeholder="Enter Age" class="form-control" onChange={(event) => { readAppotmentobj(event, 'age') }} />
+                                                                        placeholder="Enter Age" class="form-control" value={appotmentObj.age} onChange={(event) => { readAppotmentobj(event, 'age') }} />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -89,7 +103,7 @@ function NewAppoitment() {
                                                             <div class="d-flex flex-row align-items-center mb-4">
                                                                 <i class="fa fa-plus-circle fa-lg me-3 fa-fw"></i>
                                                                 <div class=" flex-fill mb-0">
-                                                                    <input type="checkbox" id="form3Example3c" onChange={(event) => { readAppotmentobj(event, 'isFirstVisit') }} /> Is First
+                                                                    <input type="checkbox" id="form3Example3c" checked={appotmentObj.isFirstVisit} onChange={(event) => { readAppotmentobj(event, 'isFirstVisit') }} /> Is First
                                                                     Time
                                                                 </div>
                                                             </div>
@@ -98,10 +112,12 @@ function NewAppoitment() {
                                                             <div class="d-flex flex-row align-items-center mb-4">
 
                                                                 <div class="mb-0">
-                                                                    <input type="radio" id="form3Example1c" value="Male" name="gender" onChange={(event) => { readAppotmentobj(event, 'gender') }} />
+                                                                    <input type="radio" id="form3Example1c" value="male"
+                                                                        checked={appotmentObj.gender === 'male'} name="gender" onChange={(event) => { readAppotmentobj(event, 'gender') }} />
                                                                     Male
-                                                                    <input type="radio" id="form3Example1c" value="FeMale"  name="gender" onChange={(event) => { readAppotmentobj(event, 'gender') }} /> Fe
-                                                                   FeMale
+                                                                    <input type="radio" id="form3Example1c" value="male"
+                                                                        checked={appotmentObj.gender === 'female'} name="gender" onChange={(event) => { readAppotmentobj(event, 'gender') }} /> Fe
+                                                                    FeMale
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -114,7 +130,7 @@ function NewAppoitment() {
                                                                 <i class="fa fa-user fa-lg me-3 fa-fw"></i>
                                                                 <div class="   mb-0">
                                                                     <input type="date" id="form3Example1c"
-                                                                        class="form-control" onChange={(event) => { readAppotmentobj(event, 'appointmentDate') }} />
+                                                                        class="form-control" value={appotmentObj.appointmentDate} onChange={(event) => { readAppotmentobj(event, 'appointmentDate') }} />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -124,7 +140,7 @@ function NewAppoitment() {
                                                                 <div class="   mb-0">
                                                                     <input type="text" id="form3Example1c"
                                                                         placeholder="Enter Appointment Time"
-                                                                        class="form-control" onChange={(event) => { readAppotmentobj(event, 'appointmentTime') }} />
+                                                                        class="form-control" value={appotmentObj.appointmentTime} onChange={(event) => { readAppotmentobj(event, 'appointmentTime') }} />
                                                                 </div>
                                                             </div>
                                                         </div>

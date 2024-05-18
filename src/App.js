@@ -12,12 +12,24 @@ import AdminLogin from './componenets/AdminLogin';
 import { useState } from 'react';
 import {selectIsLoggedIn} from './store/slices/AdminSlice';
 import { useSelector } from 'react-redux';
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function App() {
   // const [isLoggedIn, setIsLoggedIn] = useState(false);
 const isloggedIn=useSelector(selectIsLoggedIn)
   return (
     <BrowserRouter>
+      <ToastContainer 
+                position="top-center"
+                autoClose={500}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
      <div className="">
      {isloggedIn && <Navabar />}
       <Routes>
